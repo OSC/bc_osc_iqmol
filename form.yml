@@ -1,0 +1,15 @@
+cluster: "owens"
+form:
+- bc_account
+- num_cores
+- node_type
+attributes:
+  bc_account:
+    label: "Project"
+    help: "You can leave this blank if **not** in multiple projects."
+  num_cores:
+    value: 1
+    step: 1
+    min: 1
+    max: 28
+  node_type: "any"
