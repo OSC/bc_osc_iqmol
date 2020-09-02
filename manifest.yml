@@ -1,7 +1,12 @@
 ---
-name: IQMOL
+name: IQmol
 category: Interactive Apps
 subcategory: GUIs
 role: batch_connect
 description: |
-  This app needs a description!
+  This app will launch an [IQmol] GUI on the [Owens cluster]. You will be able to interact with the IQmol GUI
+  through a VNC session.
+
+  [IQmol]: http://iqmol.org/
+  [Owens cluster]: https://www.osc.edu/resources/technical_support/supercomputers/owens
+ 
