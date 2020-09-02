@@ -23,8 +23,6 @@ cd "${HOME}"
   xfce4-panel --sm-client-disable
 ) &
 
-SING_IMG="/users/PZS0714/johrstrom/Public/images/sing/iqmol.sif"
-
 #
 # Start IQMol
 #
@@ -39,4 +37,4 @@ export SINGULARITY_BINDPATH="$HOME,/etc,/fs,/var,/run,/tmp:$TMPDIR"
 
 # Launch IQMoL
 set -x
-xfce4-terminal -e "iqmol" -T "IQMol" --disable-server --minimize #--hide-menubar --hide-toolbar
+xfce4-terminal -e "iqmol" -T "IQMol" --disable-server --minimize
