@@ -33,8 +33,8 @@ module load xalt/latest iqmol/2.14
 # Output debug info
 module list
 
-export SINGULARITY_BINDPATH="$HOME,/etc,/fs,/var,/run,/tmp:$TMPDIR"
+export SINGULARITY_BINDPATH="$HOME,/etc,/fs,/var,/run,/tmp,$OSC_QCHEM_DIR:/opt/qchem,$OSC_XALT_DIR,$OSC_XALT_DIR"
 
 # Launch IQMoL
 set -x
-xfce4-terminal -e "iqmol" -T "IQMol" --disable-server --minimize
+xfce4-terminal -e "iqmol.app" -T "IQMol" --disable-server --minimize
