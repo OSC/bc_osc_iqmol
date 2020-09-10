@@ -9,7 +9,6 @@ cd "${HOME}"
 #
 # Launch Xfce Window Manager and Panel
 #
-
 (
   export SEND_256_COLORS_TO_REMOTE=1
   export XDG_CONFIG_HOME="<%= session.staged_root.join("config") %>"
@@ -20,7 +19,6 @@ cd "${HOME}"
   xfwm4 --compositor=off --daemon --sm-client-disable
   xsetroot -solid "#D3D3D3"
   xfsettingsd --sm-client-disable
-  xfce4-panel --sm-client-disable
 ) &
 
 #
@@ -35,6 +33,4 @@ module list
 
 export SINGULARITY_BINDPATH="$HOME,/etc,/fs,/var,/run,/tmp,$OSC_QCHEM_DIR:/opt/qchem,$OSC_XALT_DIR,$OSC_XALT_DIR"
 
-# Launch IQMoL
-set -x
-xfce4-terminal -e "iqmol.app" -T "IQMol" --disable-server --minimize
+iqmol.app
