@@ -1,6 +1,7 @@
 cluster: "owens"
 form:
 - bc_account
+- bc_num_hours
 - num_cores
 - node_type
 attributes:
