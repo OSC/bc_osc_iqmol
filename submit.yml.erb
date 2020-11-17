@@ -1,37 +1,21 @@
 <%-
-  ppn             = num_cores.to_i
-  base_slurm_args = ["--nodes", "1", "--ntasks-per-node", "#{ppn}"]
+  ppn = num_cores.blank? ? 28 : num_cores.to_i
 
-  slurm_args = case node_type
-              when "gpu"
-                base_slurm_args += ["--gpus-per-node", "1"]
-              else
-                base_slurm_args
-              end
+  torque_cluster = OodAppkit.clusters[cluster].job_config[:adapter] == 'torque'
 
-  torque_args = case node_type
-              when "gpu"
-                ":ppn=#{ppn}:gpus=1"
-              when "hugemem"
-                ppn == 80 ? ":ppn=#{ppn},mem=2989GB" : ":ppn=#{ppn}"
-              else
-                ":ppn=#{ppn}"
-              end
-
--%>
+  slurm_args = [ "--nodes", "1", "--ntasks-per-node", "#{ppn}" ]
+  torque_args = "1:ppn=#{ppn}"
+%>
 ---
 batch_connect:
-  template: "vnc"
+  template: vnc
 script:
-  <%- if node_type == "debug" -%>
-  queue_name: "debug"
-  <%- end -%>
   native:
-    <%- unless cluster == 'pitzer-exp' %>
+  <%- if torque_cluster %>
     resources:
-      nodes: "1<%= torque_args %>"
-    <%- else %>
-    <%- slurm_args.each do |arg| %>
+      nodes: "<%= torque_args %>"
+  <%- else %>
+  <%- slurm_args.each do |arg| %>
     - "<%= arg %>"
-    <%- end %>
-    <%- end %>
+  <%- end %>
+  <%- end %>
