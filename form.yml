@@ -1,16 +1,23 @@
-cluster: "owens"
+cluster:
+  - "owens"
+  - "owens-slurm"
 form:
-- bc_account
-- bc_num_hours
-- num_cores
-- node_type
+  - bc_account
+  - bc_num_hours
+  - num_cores
+  - node_type
 attributes:
   bc_account:
     label: "Project"
     help: "You can leave this blank if **not** in multiple projects."
   num_cores:
+    widget: "number_field"
+    label: "Number of cores"
     value: 1
-    step: 1
-    min: 1
+    help: |
+      Number of cores on node type (4 GB per core unless requesting whole
+      node). Leave blank if requesting full node.
+    min: 0
     max: 28
+    step: 1
   node_type: "any"
