@@ -6,6 +6,7 @@
 ---
 cluster:
   - "owens"
+  - "pitzer"
 form:
   - account
   - bc_num_hours
@@ -29,4 +30,13 @@ attributes:
     min: 0
     max: 28
     step: 1
-  node_type: "any"
+  node_type: 
+    widget: select
+    options:
+      - [
+          "any", "any",
+          data-min-num-cores-for-cluster-owens: 1,
+          data-max-num-cores-for-cluster-owens: 28,
+          data-min-num-cores-for-cluster-pitzer: 1,
+          data-max-num-cores-for-cluster-pitzer: 48,
+        ]
