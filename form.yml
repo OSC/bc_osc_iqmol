@@ -2,16 +2,23 @@
 cluster:
   - "pitzer"
 form:
+  - auto_modules_iqmol
   - auto_accounts
+  - global_job_type
+  - global_enable_mem
+  - global_num_cores
+  - global_mem
   - bc_num_hours
-  - num_cores
+  - global_enable_debug
+  - bc_vnc_resolution
+  - bc_email_on_started
+  - global_default_values     # required if the global_job_type is used
 attributes:
-  num_cores:
-    widget: "number_field"
-    label: "Number of cores"
-    value: 1
-    help: |
-      Request 48 cores to get the entire machine.
-    min: 1
-    max: 48
-    step: 1
+  auto_modules_iqmol:
+    default: false
+    help: "This defines the version of IQmol you want to load."
+    label: "IQmol version"
+  bc_vnc_resolution:
+    required: true
+  global_job_type:
+    hide_by_default: true
